@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 999;
+  transition: 1s;
+}
+
+#intro h1 {
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#intro h3 {
+  color: #ff8db3;
+  margin-bottom: 40px;
+  font-weight: normal;
+}
+
+#startBtn {
+  padding: 15px 45px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #ff4d6d;
+  color: white;
+  transition: 0.3s;
+}
+
+#startBtn:hover {
+  transform: scale(1.05);
+  background: #ff6b89;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#portraitContainer {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 1s;
+}
+
+#portrait {
+  width: 420px;
+  height: 600px;
+
+  overflow: hidden;
+
+  font-size: 7px;
+  line-height: 6px;
+  letter-spacing: -0.15px;
+
+  text-align: justify;
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  background: url("gweneth.png") center/contain no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+#letterContainer {
+  display: none;
+  width: 80%;
+  max-width: 850px;
+  margin: 70px auto 120px auto;
+  color: white;
+  animation: fadeIn 1s;
+}
+
+#letterContainer h2 {
+  text-align: center;
+  color: #ff8db3;
+
+  margin-bottom: 30px;
+}
+
+#letter {
+  font-size: 20px;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.glow {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px hotpink);
+  }
+
+  to {
+    filter: drop-shadow(0 0 25px deeppink);
+  }
+}
+
+.zoom {
+  animation: zoom 4s forwards;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+#petals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+
+  color: #ffb6c1;
+
+  font-size: 22px;
+
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(120px) rotate(360deg);
+
+    opacity: 0;
+  }
+}
+
+#giftContainer {
+  display: none;
+
+  text-align: center;
+
+  color: white;
+
+  margin-top: 40px;
+
+  animation: fadeIn 1s;
+}
+
+#giftBtn {
+  padding: 15px 40px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background: #ff4d6d;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 20px;
+
+  transition: 0.3s;
+}
+
+#giftBtn:hover {
+  transform: scale(1.05);
+}
+
+#bouquet {
+  display: none;
+  margin-top: 40px;
+
+  font-size: 80px;
+  text-align: center;
+
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+#bouquet.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#bouquet h2 {
+  margin-top: 20px;
+  color: #ff8db3;
+  font-size: 36px;
+}
+
+#bouquet p {
+  margin-top: 15px;
+  color: white;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+#bouquet h3 {
+  margin-top: 20px;
+  color: #ff8db3;
+}
