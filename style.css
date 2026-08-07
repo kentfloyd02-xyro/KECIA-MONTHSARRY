@@ -4,13 +4,17 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #000;
   font-family: Arial, Helvetica, sans-serif;
-
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 
 #intro {
   position: fixed;
@@ -19,33 +23,49 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   background: #000;
   z-index: 999;
-  transition: 1s;
+
+  padding: 20px;
+  text-align: center;
+
+  transition: opacity 1s ease;
 }
 
 #intro h1 {
   color: #fff;
-  font-size: 48px;
+  font-size: clamp(30px, 6vw, 48px);
   margin-bottom: 15px;
   text-align: center;
+  line-height: 1.2;
 }
 
 #intro h3 {
   color: #ff8db3;
   margin-bottom: 40px;
   font-weight: normal;
+
+  font-size: clamp(16px, 3vw, 22px);
+  line-height: 1.4;
 }
 
 #startBtn {
-  padding: 15px 45px;
-  font-size: 18px;
+  padding: 14px 40px;
+
+  font-size: clamp(16px, 3vw, 18px);
+
   border: none;
   border-radius: 50px;
+
   cursor: pointer;
+
   background: #ff4d6d;
   color: white;
-  transition: 0.3s;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 #startBtn:hover {
@@ -53,67 +73,100 @@ body {
   background: #ff6b89;
 }
 
+#startBtn:active {
+  transform: scale(0.97);
+}
+
 .hide {
   opacity: 0;
   pointer-events: none;
 }
 
+
 #portraitContainer {
   display: none;
+
   width: 100%;
   min-height: 100vh;
+
+  padding: 30px 20px;
 
   justify-content: center;
   align-items: center;
 
-  animation: fadeIn 1s;
+  animation: fadeIn 1s ease;
+
+  overflow: hidden;
 }
 
 #portrait {
-  width: 420px;
-  height: 600px;
+  
+  width: min(90vw, 420px);
+
+  aspect-ratio: 7 / 10;
+
+  height: auto;
 
   overflow: hidden;
 
-  font-size: 7px;
-  line-height: 6px;
+  font-size: clamp(4px, 1.5vw, 7px);
+  line-height: clamp(4px, 1.3vw, 6px);
+
   letter-spacing: -0.15px;
 
   text-align: justify;
   white-space: pre-wrap;
   word-break: break-word;
 
-  background: url("gweneth.png") center/contain no-repeat;
+  background: url("gweneth.png") center / contain no-repeat;
 
   -webkit-background-clip: text;
   background-clip: text;
 
   color: transparent;
   -webkit-text-fill-color: transparent;
+
+  flex-shrink: 1;
 }
+
 
 #letterContainer {
   display: none;
-  width: 80%;
-  max-width: 850px;
-  margin: 70px auto 120px auto;
+
+  width: min(90%, 850px);
+
+  margin: 50px auto 100px auto;
+
   color: white;
-  animation: fadeIn 1s;
+
+  animation: fadeIn 1s ease;
+
+  padding: 0 10px;
 }
 
 #letterContainer h2 {
   text-align: center;
+
   color: #ff8db3;
 
   margin-bottom: 30px;
+
+  font-size: clamp(24px, 5vw, 34px);
+
+  line-height: 1.3;
 }
 
 #letter {
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
+
   line-height: 1.8;
 
   white-space: pre-wrap;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
+
 
 @keyframes fadeIn {
   from {
@@ -160,24 +213,31 @@ body {
   }
 }
 
+
 #petals {
   position: fixed;
+
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
+
   pointer-events: none;
+
   z-index: 1;
 }
 
 .petal {
   position: absolute;
+
   top: -40px;
 
   color: #ffb6c1;
 
-  font-size: 22px;
+  font-size: clamp(14px, 3vw, 22px);
 
   animation-name: fall;
   animation-timing-function: linear;
@@ -187,7 +247,6 @@ body {
 @keyframes fall {
   0% {
     transform: translateY(-50px) rotate(0deg);
-
     opacity: 0;
   }
 
@@ -196,14 +255,20 @@ body {
   }
 
   100% {
-    transform: translateY(110vh) translateX(120px) rotate(360deg);
+    transform:
+      translateY(110vh)
+      translateX(120px)
+      rotate(360deg);
 
     opacity: 0;
   }
 }
 
+
 #giftContainer {
   display: none;
+
+  width: 100%;
 
   text-align: center;
 
@@ -211,11 +276,13 @@ body {
 
   margin-top: 40px;
 
-  animation: fadeIn 1s;
+  padding: 0 20px;
+
+  animation: fadeIn 1s ease;
 }
 
 #giftBtn {
-  padding: 15px 40px;
+  padding: 14px 35px;
 
   border: none;
 
@@ -227,24 +294,40 @@ body {
 
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
 
-  transition: 0.3s;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 #giftBtn:hover {
   transform: scale(1.05);
+  background: #ff6b89;
 }
+
+#giftBtn:active {
+  transform: scale(0.97);
+}
+
 
 #bouquet {
   display: none;
+
+  width: 100%;
+
   margin-top: 40px;
 
-  font-size: 80px;
+  padding: 0 20px;
+
+  font-size: clamp(50px, 12vw, 80px);
+
   text-align: center;
 
   opacity: 0;
+
   transform: scale(0.8);
+
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
@@ -252,24 +335,234 @@ body {
 
 #bouquet.show {
   display: block;
+
   opacity: 1;
+
   transform: scale(1);
 }
 
 #bouquet h2 {
   margin-top: 20px;
+
   color: #ff8db3;
-  font-size: 36px;
+
+  font-size: clamp(24px, 6vw, 36px);
+
+  line-height: 1.3;
 }
 
 #bouquet p {
-  margin-top: 15px;
+  width: min(90%, 700px);
+
+  margin: 15px auto 0;
+
   color: white;
-  font-size: 20px;
+
+  font-size: clamp(16px, 3vw, 20px);
+
   line-height: 1.8;
+
+  overflow-wrap: break-word;
 }
 
 #bouquet h3 {
   margin-top: 20px;
+
   color: #ff8db3;
+
+  font-size: clamp(18px, 4vw, 26px);
+
+  line-height: 1.4;
+}
+
+
+
+@media (max-width: 480px) {
+
+  #intro {
+    padding: 15px;
+  }
+
+  #intro h1 {
+    font-size: 30px;
+  }
+
+  #intro h3 {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  #startBtn {
+    width: auto;
+    min-width: 180px;
+    padding: 13px 28px;
+  }
+
+  #portraitContainer {
+    padding: 20px 10px;
+  }
+
+  #portrait {
+    width: 92vw;
+
+    font-size: 4px;
+    line-height: 4px;
+
+    letter-spacing: -0.1px;
+  }
+
+  #letterContainer {
+    width: 94%;
+
+    margin-top: 40px;
+    margin-bottom: 70px;
+
+    padding: 0;
+  }
+
+  #letterContainer h2 {
+    margin-bottom: 20px;
+  }
+
+  #letter {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  #giftContainer {
+    margin-top: 30px;
+    padding: 0 15px;
+  }
+
+  #giftBtn {
+    padding: 13px 30px;
+  }
+
+  #bouquet {
+    margin-top: 30px;
+    padding: 0 15px;
+  }
+
+  #bouquet p {
+    width: 100%;
+    line-height: 1.7;
+  }
+
+}
+
+
+@media (max-width: 320px) {
+
+  #intro h1 {
+    font-size: 26px;
+  }
+
+  #intro h3 {
+    font-size: 14px;
+  }
+
+  #startBtn {
+    font-size: 15px;
+    padding: 12px 25px;
+  }
+
+  #portrait {
+    width: 95vw;
+
+    font-size: 3.5px;
+    line-height: 3.5px;
+  }
+
+  #letter {
+    font-size: 15px;
+  }
+
+  #bouquet {
+    font-size: 50px;
+  }
+
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+  #portrait {
+    width: min(80vw, 420px);
+  }
+
+  #letterContainer {
+    width: 88%;
+  }
+
+  #letter {
+    font-size: 18px;
+  }
+
+}
+
+@media (min-width: 769px) {
+
+  #portraitContainer {
+    padding: 40px;
+  }
+
+  #letterContainer {
+    width: min(80%, 850px);
+  }
+
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  #intro {
+    justify-content: center;
+
+    padding: 15px;
+  }
+
+  #intro h1 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+  }
+
+  #intro h3 {
+    font-size: 14px;
+
+    margin-bottom: 15px;
+  }
+
+  #startBtn {
+    padding: 10px 30px;
+
+    font-size: 15px;
+  }
+
+  #portraitContainer {
+    min-height: 100vh;
+
+    padding: 20px;
+  }
+
+  #portrait {
+    height: 85vh;
+    width: auto;
+
+    aspect-ratio: 7 / 10;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
 }
