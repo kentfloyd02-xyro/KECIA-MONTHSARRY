@@ -333,8 +333,12 @@ body {
   transform: scale(1);
 }
 
-#bouquet > div {
-  line-height: 1;
+#bouquet img {
+  display: block;
+  width: min(80vw, 360px);
+  max-height: 50vh;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 #bouquet h2 {
